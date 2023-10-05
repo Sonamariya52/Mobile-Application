@@ -1,0 +1,55 @@
+Xml File:
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="UserName"
+        android:id="@+id/username"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="password"
+        android:id="@+id/password"
+        android:inputType="textPassword"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:id="@+id/login"/>
+</LinearLayout>
+
+Java File:
+
+import java.util.Objects;
+
+public class MainActivity extends AppCompatActivity {
+    EditText username,password;
+    Button login;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        username=findViewById(R.id.username);
+        password=findViewById(R.id.password);
+        login=findViewById(R.id.login);
+    login.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            if(Objects.equals(username.getText().toString(), "admin")&&Objects.equals(password.getText().toString(),"admin"))
+            {
+                Toast.makeText(MainActivity.this,"You have Authenticated Successfully",Toast.LENGTH_LONG).show();
+            }else
+            {
+                Toast.makeText(MainActivity.this,"Authentication Failed",Toast.LENGTH_LONG).show();
+            }
+        }
+    });
+        }
+    }
